@@ -31,6 +31,48 @@ public class Checkpoint {
 		 */
 		
 		
+		ArrayList<CarMPGEntry> list = readCarMPGEntryDataFromFile();
+		//Stream<CarMPGEntry> listS = list.stream();
+		
+		list.stream().forEach((e)->{
+			System.out.println(e.carName + "  " + e.mpg);
+		});
+		//
+		//
+		System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+		Stream<CarMPGEntry>listS = list.stream().sorted();
+		
+		listS.forEach((e)->{
+			System.out.println(e.carName);
+		});
+		
+		//
+		System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+		Stream<CarMPGEntry> cy = list.stream().filter((s)->{
+			if(s.cylinders != 8) {
+				return true;
+			}
+			return false;	
+		});
+		
+		cy.forEach((e)->{
+			System.out.println(e.carName);
+		});
+		
+		//
+		System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+		Stream<CarMPGEntry> toy = list.stream().filter((s)->{
+			if(s.carName.contains("toyota")) {
+				return true;
+			}
+			return false;	
+		});
+		
+		toy.forEach((e)->{
+			System.out.println(e.carName);
+		});
+		
+		
 	}
 	
 	public static ArrayList<CarMPGEntry> readCarMPGEntryDataFromFile(){
